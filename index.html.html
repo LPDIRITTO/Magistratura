@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Magistratura – Lezione di Recupero</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nero:    #1a1a2e;
+  --blu:     #16213e;
+  --blu2:    #0f3460;
+  --oro:     #e2b04a;
+  --oro2:    #f5c842;
+  --rosso:   #c0392b;
+  --verde:   #1a6b3c;
+  --grigio:  #f4f1eb;
+  --testo:   #2c2c2c;
+  --bianco:  #ffffff;
+  --ombra:   0 8px 32px rgba(0,0,0,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--grigio);color:var(--testo);min-height:100vh;}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0a0a1a 0%,#16213e 55%,#0f3460 100%);color:white;padding:56px 40px 70px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;left:-60px;width:320px;height:320px;border-radius:50%;background:rgba(226,176,74,0.08);}
+.hero::after{content:'';position:absolute;bottom:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(226,176,74,0.06);}
+.hero-tag{display:inline-block;background:var(--oro);color:#1a1a1a;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 18px;border-radius:20px;margin-bottom:18px;}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:700;line-height:1.1;margin-bottom:14px;}
+.hero h1 span{color:var(--oro);}
+.hero p{font-size:1.05rem;opacity:.8;max-width:560px;margin:0 auto 10px;}
+.hero-sub{font-size:.85rem;opacity:.55;letter-spacing:1px;text-transform:uppercase;}
+
+/* NAV */
+.nav-wrap{background:white;box-shadow:0 2px 16px rgba(0,0,0,.09);position:sticky;top:0;z-index:100;}
+.nav-tabs{display:flex;overflow-x:auto;padding:0 16px;gap:2px;scrollbar-width:none;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:15px 18px;border:none;background:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-weight:600;color:#999;border-bottom:3px solid transparent;transition:all .22s;white-space:nowrap;letter-spacing:.3px;}
+.tab-btn.active{color:var(--blu2);border-bottom-color:var(--oro);}
+.tab-btn:hover{color:var(--blu2);}
+
+/* SECTIONS */
+.section{display:none;max-width:920px;margin:0 auto;padding:40px 20px 70px;animation:fadeIn .35s ease;}
+.section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.sec-title{font-family:'Libre Baskerville',serif;font-size:1.9rem;color:var(--blu2);margin-bottom:6px;}
+.sec-sub{color:#999;margin-bottom:30px;font-size:.93rem;}
+
+/* CARDS */
+.card{background:white;border-radius:14px;padding:26px;box-shadow:var(--ombra);margin-bottom:18px;border-left:5px solid var(--blu2);transition:transform .18s;}
+.card:hover{transform:translateY(-2px);}
+.card.oro{border-left-color:var(--oro);}
+.card.rosso{border-left-color:var(--rosso);}
+.card.verde{border-left-color:var(--verde);}
+.card.nero{border-left-color:var(--nero);}
+.card h3{font-family:'Libre Baskerville',serif;font-size:1.18rem;margin-bottom:9px;}
+.card p{line-height:1.72;color:#555;font-size:.94rem;}
+.card-icon{font-size:1.9rem;margin-bottom:9px;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+/* HIGHLIGHT */
+.hl{background:linear-gradient(135deg,#e8f0fa,#d6e4f7);border-radius:13px;padding:22px;margin:18px 0;border:1px solid #b8d0ef;}
+.hl.warn{background:linear-gradient(135deg,#fff8e1,#fef3c7);border-color:#f0d060;}
+.hl.danger{background:linear-gradient(135deg,#fdecea,#fcd6d6);border-color:#e8a0a0;}
+.hl.dark{background:linear-gradient(135deg,#1a1a2e,#16213e);color:white;border:none;}
+.hl h4{font-size:.95rem;font-weight:700;margin-bottom:7px;color:var(--blu2);}
+.hl.warn h4{color:#7a5500;}
+.hl.danger h4{color:var(--rosso);}
+.hl.dark h4{color:var(--oro);}
+.hl p{font-size:.9rem;line-height:1.65;}
+.hl.dark p{color:rgba(255,255,255,.85);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;box-shadow:var(--ombra);margin:16px 0;}
+.tbl th{background:var(--blu2);color:white;padding:13px 16px;text-align:left;font-size:.85rem;letter-spacing:.4px;}
+.tbl td{padding:12px 16px;border-bottom:1px solid #f0f0f0;font-size:.88rem;color:#444;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:#f8f9ff;}
+
+/* QUIZ */
+.quiz-card{background:white;border-radius:14px;padding:28px;box-shadow:var(--ombra);margin-bottom:22px;}
+.quiz-num{font-size:.76rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-bottom:7px;}
+.quiz-q{font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:18px;line-height:1.5;}
+.opts{display:flex;flex-direction:column;gap:9px;}
+.opt-btn{padding:13px 18px;border:2px solid #e5e5e5;border-radius:9px;background:white;cursor:pointer;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.92rem;transition:all .18s;color:var(--testo);}
+.opt-btn:hover:not(:disabled){border-color:var(--blu2);background:#f0f4ff;}
+.opt-btn.correct{background:#d4edda;border-color:#28a745;color:#155724;}
+.opt-btn.wrong{background:#f8d7da;border-color:#dc3545;color:#721c24;}
+.opt-btn:disabled{cursor:default;}
+.fb{margin-top:13px;padding:13px 16px;border-radius:9px;font-size:.88rem;display:none;line-height:1.6;}
+.fb.show{display:block;}
+.fb.ok{background:#d4edda;color:#155724;border-left:4px solid #28a745;}
+.fb.ko{background:#f8d7da;color:#721c24;border-left:4px solid #dc3545;}
+
+/* SCORE BAR */
+.score-bar{background:white;border-radius:13px;padding:18px 26px;box-shadow:var(--ombra);display:flex;align-items:center;gap:18px;margin-bottom:28px;flex-wrap:wrap;}
+.score-num{font-family:'Libre Baskerville',serif;font-size:2.4rem;color:var(--blu2);font-weight:700;}
+.score-label{font-size:.88rem;color:#999;}
+.reset-btn{padding:10px 22px;border:none;border-radius:9px;background:#eee;color:#555;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:600;margin-left:auto;}
+.reset-btn:hover{background:#ddd;}
+
+/* DRAG DROP */
+.drag-area{background:white;border-radius:14px;padding:26px;box-shadow:var(--ombra);margin-bottom:18px;}
+.drag-area h3{font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:5px;}
+.drag-area .hint{color:#999;font-size:.88rem;margin-bottom:14px;}
+.drag-pool{display:flex;flex-wrap:wrap;gap:9px;min-height:52px;background:#f8f8f8;border-radius:9px;padding:12px;margin-bottom:18px;border:2px dashed #ddd;}
+.drag-item{padding:7px 15px;border-radius:18px;cursor:grab;font-size:.84rem;font-weight:700;user-select:none;transition:transform .13s,box-shadow .13s;color:white;background:var(--blu2);}
+.drag-item.oro{background:var(--oro);color:#1a1a1a;}
+.drag-item.rosso{background:var(--rosso);}
+.drag-item.verde{background:var(--verde);}
+.drag-item:active{cursor:grabbing;transform:scale(1.06);box-shadow:0 6px 18px rgba(0,0,0,.18);}
+.drop-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+@media(max-width:600px){.drop-zones,.drop-zones-2{grid-template-columns:1fr!important;}}
+.drop-zones-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.drop-zone{min-height:90px;border:2px dashed #ccc;border-radius:11px;padding:12px;transition:background .18s,border-color .18s;}
+.drop-zone.over{background:#e8f0fa;border-color:var(--blu2);}
+.drop-zone h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:9px;}
+.drop-zone .dropped{display:flex;flex-wrap:wrap;gap:7px;min-height:36px;}
+.check-btn{padding:11px 24px;border:none;border-radius:9px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;margin-top:14px;margin-right:9px;transition:opacity .18s,transform .13s;background:var(--blu2);color:white;}
+.check-btn:hover{opacity:.88;transform:translateY(-1px);}
+.rst-btn{padding:11px 22px;border:none;border-radius:9px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:600;background:#eee;color:#555;margin-top:14px;}
+.drag-result{margin-top:13px;padding:13px;border-radius:9px;display:none;font-size:.92rem;}
+.drag-result.show{display:block;}
+.drag-result.ok{background:#d4edda;color:#155724;}
+.drag-result.ko{background:#f8d7da;color:#721c24;}
+
+/* MATCHING */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+@media(max-width:580px){.match-grid{grid-template-columns:1fr;}}
+.match-btn{display:block;width:100%;padding:11px 14px;border:2px solid #e0e0e0;border-radius:9px;background:white;cursor:pointer;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.86rem;margin-bottom:7px;transition:all .18s;font-weight:500;}
+.match-btn.selected{border-color:var(--blu2);background:#e8f0fa;}
+.match-btn.matched{border-color:#28a745;background:#d4edda;color:#155724;pointer-events:none;}
+.match-btn.wrong-match{border-color:var(--rosso);background:#fdecea;animation:shake .38s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.match-score{margin-top:11px;font-weight:700;color:var(--verde);display:none;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:18px 0;}
+.flow-step{background:var(--blu2);color:white;border-radius:9px;padding:11px 16px;font-size:.82rem;font-weight:700;text-align:center;min-width:100px;flex-shrink:0;}
+.flow-step small{display:block;font-weight:400;font-size:.72rem;opacity:.85;margin-top:2px;}
+.flow-step.oro{background:var(--oro);color:#1a1a1a;}
+.flow-step.rosso{background:var(--rosso);}
+.flow-step.verde{background:var(--verde);}
+.flow-arrow{font-size:1.3rem;color:var(--oro);flex-shrink:0;}
+
+/* GLOSSARY */
+.glos-item{border-bottom:1px solid #eee;padding:14px 0;cursor:pointer;}
+.glos-item:last-child{border-bottom:none;}
+.glos-term{font-weight:700;color:var(--blu2);font-size:.97rem;display:flex;justify-content:space-between;align-items:center;}
+.glos-def{font-size:.88rem;color:#555;line-height:1.65;margin-top:7px;display:none;}
+.glos-def.open{display:block;}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 11px;border-radius:18px;font-size:.76rem;font-weight:700;}
+.badge.blu{background:#cfe2ff;color:#084298;}
+.badge.oro{background:#fff3cd;color:#856404;}
+.badge.rosso{background:#f8d7da;color:#721c24;}
+.badge.verde{background:#d1e7dd;color:#0a3622;}
+
+/* ===== SIMULAZIONE PROCESSO ===== */
+.processo-wrap{background:white;border-radius:16px;box-shadow:var(--ombra);overflow:hidden;margin-bottom:22px;}
+.processo-header{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;padding:28px 30px;}
+.processo-header h2{font-family:'Libre Baskerville',serif;font-size:1.6rem;margin-bottom:6px;}
+.processo-header p{opacity:.8;font-size:.92rem;}
+.processo-body{padding:28px;}
+
+.caso-box{background:linear-gradient(135deg,#1a1a2e,#16213e);color:white;border-radius:12px;padding:24px;margin-bottom:22px;}
+.caso-box h3{font-family:'Libre Baskerville',serif;color:var(--oro);font-size:1.2rem;margin-bottom:10px;}
+.caso-box p{opacity:.88;line-height:1.7;font-size:.93rem;}
+
+.ruoli-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:22px;}
+.ruolo-card{border-radius:11px;padding:16px;text-align:center;border:2px solid transparent;cursor:pointer;transition:all .2s;}
+.ruolo-card.active-role{transform:scale(1.04);box-shadow:0 6px 20px rgba(0,0,0,.15);}
+.ruolo-card .r-icon{font-size:2.2rem;margin-bottom:6px;}
+.ruolo-card h4{font-size:.9rem;font-weight:700;margin-bottom:3px;}
+.ruolo-card p{font-size:.78rem;opacity:.8;}
+
+.fase-navigator{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+.fase-btn{padding:9px 16px;border:2px solid #ddd;border-radius:8px;background:white;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.82rem;font-weight:600;color:#888;transition:all .18s;}
+.fase-btn.active-fase{background:var(--blu2);color:white;border-color:var(--blu2);}
+.fase-btn.done{background:#d4edda;color:#155724;border-color:#28a745;}
+
+.fase-content{display:none;}
+.fase-content.show{display:block;animation:fadeIn .3s ease;}
+
+.aula-tribunale{background:linear-gradient(180deg,#f0ede8 0%,#e8e4dc 100%);border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;border:3px solid #c8b89a;}
+.aula-row{display:flex;justify-content:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.persona{background:white;border-radius:10px;padding:10px 14px;min-width:90px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);border:2px solid transparent;}
+.persona.giudice{border-color:#c9a84c;background:#fff8e8;}
+.persona.pm{border-color:#c0392b;background:#fdecea;}
+.persona.imputato{border-color:#1a3a6b;background:#e8edf8;}
+.persona.avvocato{border-color:#1a6b3c;background:#e8f5ee;}
+.persona .p-icon{font-size:1.6rem;}
+.persona .p-nome{font-size:.72rem;font-weight:700;margin-top:3px;}
+.persona .p-ruolo{font-size:.68rem;color:#888;}
+
+.dialogo-box{background:#f8f8f8;border-radius:11px;padding:18px;margin:14px 0;border-left:4px solid var(--blu2);}
+.dialogo-box.pm{border-left-color:var(--rosso);}
+.dialogo-box.avv{border-left-color:var(--verde);}
+.dialogo-box.giud{border-left-color:var(--oro);}
+.dialogo-chi{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.dialogo-chi.pm-txt{color:var(--rosso);}
+.dialogo-chi.avv-txt{color:var(--verde);}
+.dialogo-chi.giud-txt{color:#8a6000;}
+.dialogo-testo{font-size:.92rem;line-height:1.65;font-style:italic;}
+
+.scelta-btn{width:100%;padding:14px 18px;border:2px solid #e0e0e0;border-radius:10px;background:white;cursor:pointer;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.9rem;transition:all .18s;margin-bottom:9px;color:var(--testo);}
+.scelta-btn:hover:not(:disabled){border-color:var(--blu2);background:#f0f4ff;}
+.scelta-btn.ok{background:#d4edda;border-color:#28a745;color:#155724;}
+.scelta-btn.ko{background:#f8d7da;border-color:#dc3545;color:#721c24;}
+.scelta-fb{padding:14px;border-radius:9px;display:none;font-size:.9rem;line-height:1.6;margin-top:4px;}
+.scelta-fb.show{display:block;}
+.scelta-fb.ok{background:#d4edda;color:#155724;}
+.scelta-fb.ko{background:#f8d7da;color:#721c24;}
+
+.verdetto-box{background:linear-gradient(135deg,var(--blu2),var(--nero));color:white;border-radius:14px;padding:28px;text-align:center;display:none;}
+.verdetto-box.show{display:block;animation:fadeIn .5s ease;}
+.verdetto-box h2{font-family:'Libre Baskerville',serif;font-size:2rem;color:var(--oro);margin-bottom:12px;}
+.verdetto-box p{opacity:.88;line-height:1.7;}
+.verdetto-btn{background:var(--oro);color:#1a1a1a;border:none;padding:13px 28px;border-radius:9px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.95rem;font-weight:700;margin-top:18px;}
+
+/* SCENARIO */
+.scen-box{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:white;border-radius:14px;padding:28px;margin-bottom:18px;}
+.scen-box h3{font-family:'Libre Baskerville',serif;font-size:1.2rem;color:var(--oro);margin-bottom:11px;}
+.scen-box p{opacity:.88;line-height:1.7;margin-bottom:18px;font-size:.93rem;}
+.scen-opts{display:flex;flex-direction:column;gap:9px;}
+.scen-opt{padding:13px 18px;border:2px solid rgba(255,255,255,.25);border-radius:9px;background:rgba(255,255,255,.07);color:white;cursor:pointer;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.9rem;transition:all .18s;}
+.scen-opt:hover:not(:disabled){background:rgba(255,255,255,.15);border-color:var(--oro);}
+.scen-opt.ok{background:rgba(40,167,69,.3);border-color:#28a745;}
+.scen-opt.ko{background:rgba(220,53,69,.3);border-color:#dc3545;}
+.scen-fb{margin-top:14px;padding:14px;border-radius:9px;display:none;background:rgba(255,255,255,.1);font-size:.9rem;line-height:1.6;}
+.scen-fb.show{display:block;}
+
+/* FILL */
+.fill-card{background:white;border-radius:13px;padding:22px;box-shadow:var(--ombra);margin-bottom:14px;}
+.fill-card p{margin-bottom:12px;font-size:.95rem;line-height:1.65;}
+.fill-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.fill-opt{padding:8px 16px;border:2px solid #ddd;border-radius:8px;background:white;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.88rem;transition:all .18s;}
+.fill-opt:hover:not(:disabled){border-color:var(--blu2);background:#f0f4ff;}
+.fill-opt.correct{background:#d4edda;border-color:#28a745;color:#155724;}
+.fill-opt.wrong{background:#f8d7da;border-color:#dc3545;color:#721c24;}
+
+/* RECAP */
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;}
+.recap-card{background:white;border-radius:13px;padding:20px;box-shadow:var(--ombra);text-align:center;cursor:pointer;transition:transform .18s;}
+.recap-card:hover{transform:translateY(-2px);}
+.recap-card .emoji{font-size:2.1rem;margin-bottom:9px;}
+.recap-card h4{font-family:'Libre Baskerville',serif;font-size:.97rem;margin-bottom:5px;}
+.recap-card p{font-size:.8rem;color:#888;line-height:1.5;}
+
+/* PROGRESS BAR */
+.prog-bar-wrap{background:#eee;border-radius:20px;height:8px;overflow:hidden;margin-bottom:6px;}
+.prog-bar{background:linear-gradient(90deg,var(--blu2),var(--oro));height:100%;border-radius:20px;transition:width .5s ease;}
+
+footer{text-align:center;padding:28px;color:#bbb;font-size:.78rem;border-top:1px solid #eee;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">⚖️ Lezione di Recupero · Classe Seconda · Unità H</div>
+  <h1>La <span>Magistratura</span></h1>
+  <p>Funzione giurisdizionale · Indipendenza · I tre processi · Simulazione in aula</p>
+  <div class="hero-sub" style="margin-top:14px;">impara · esplora · simula · verifica</div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('intro')">🏠 Intro</button>
+    <button class="tab-btn" onclick="showTab('funzione')">⚖️ Funzione</button>
+    <button class="tab-btn" onclick="showTab('indipendenza')">🛡️ Indipendenza</button>
+    <button class="tab-btn" onclick="showTab('csm')">🏛️ CSM</button>
+    <button class="tab-btn" onclick="showTab('processi')">📋 I Processi</button>
+    <button class="tab-btn" onclick="showTab('processo-sim')">🎭 Simula!</button>
+    <button class="tab-btn" onclick="showTab('quiz')">🎯 Quiz</button>
+    <button class="tab-btn" onclick="showTab('esercizi')">🔨 Esercizi</button>
+    <button class="tab-btn" onclick="showTab('glossario')">📖 Glossario</button>
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<div id="section-intro" class="section active">
+  <h2 class="sec-title">Benvenuto nella lezione!</h2>
+  <p class="sec-sub">Questa lezione di recupero ti guida passo passo attraverso tutti gli argomenti sulla Magistratura.</p>
+
+  <div class="hl warn">
+    <h4>🗺️ Come usare questa lezione</h4>
+    <p>Naviga con le schede in alto. Ogni sezione ha teoria + esercizi interattivi. La sezione <strong>"Simula!"</strong> ti fa vivere un processo penale in prima persona. Alla fine c'è il <strong>Quiz finale</strong> per testare tutto!</p>
+  </div>
+
+  <div class="recap-grid" style="margin-top:22px;">
+    <div class="recap-card" onclick="showTab('funzione')"><div class="emoji">⚖️</div><h4>La Funzione</h4><p>Cos'è la funzione giurisdizionale? Perché esiste?</p></div>
+    <div class="recap-card" onclick="showTab('indipendenza')"><div class="emoji">🛡️</div><h4>Indipendenza</h4><p>I 3 principi che garantiscono l'autonomia dei giudici</p></div>
+    <div class="recap-card" onclick="showTab('csm')"><div class="emoji">🏛️</div><h4>Il CSM</h4><p>L'organo di autogoverno della Magistratura</p></div>
+    <div class="recap-card" onclick="showTab('processi')"><div class="emoji">📋</div><h4>I 3 Processi</h4><p>Civile, penale, amministrativo: le differenze</p></div>
+    <div class="recap-card" onclick="showTab('processo-sim')"><div class="emoji">🎭</div><h4>Simula un Processo!</h4><p>Entra nell'aula del tribunale e partecipa dal vivo</p></div>
+    <div class="recap-card" onclick="showTab('quiz')"><div class="emoji">🎯</div><h4>Quiz Finale</h4><p>10 domande per testare tutto quello che hai imparato</p></div>
+  </div>
+
+  <div class="card oro" style="margin-top:22px;">
+    <div class="card-icon">💡</div>
+    <h3>Lo sapevi?</h3>
+    <p>In Italia ogni sentenza inizia con la formula <strong>"In nome del popolo italiano"</strong>. Questo non è solo una frase: significa che i giudici esercitano la giustizia <em>per conto di tutti i cittadini</em>, non per conto del Governo o di chi è al potere.</p>
+  </div>
+</div>
+
+<!-- ============ FUNZIONE ============ -->
+<div id="section-funzione" class="section">
+  <h2 class="sec-title">La Funzione Giurisdizionale</h2>
+  <p class="sec-sub">Cos'è e perché è fondamentale per la società</p>
+
+  <div class="card">
+    <div class="card-icon">⚖️</div>
+    <h3>Cos'è la funzione giurisdizionale?</h3>
+    <p>Consiste nell'<strong>applicare le norme giuridiche ai casi concreti</strong> della vita reale per: risolvere i conflitti pacificamente, accertare se una norma è stata violata, applicare le sanzioni previste dalla legge.</p>
+  </div>
+
+  <div class="hl danger">
+    <h4>🚫 Il principio fondamentale: nessuno può farsi giustizia da solo</h4>
+    <p>Se tutti si facessero giustizia da soli → conflitti e vendette si moltiplicherebbero → la società scivolerebbe verso l'<strong>anarchia</strong>. Per questo esiste la Magistratura come <strong>autorità imparziale</strong>.</p>
+  </div>
+
+  <div class="grid-2" style="margin-top:18px;">
+    <div class="card">
+      <div class="card-icon">👨‍⚖️</div>
+      <h3>I Giudici</h3>
+      <p><strong>Magistratura giudicante</strong>: celebrano i processi con imparzialità ed emettono la <strong>sentenza finale</strong>. Sono soggetti solo alla legge.</p>
+    </div>
+    <div class="card rosso">
+      <div class="card-icon">🔍</div>
+      <h3>I Pubblici Ministeri (PM)</h3>
+      <p><strong>Magistratura requirente</strong>: dirigono le indagini della polizia giudiziaria e svolgono il ruolo della <strong>pubblica accusa</strong> in nome dello Stato.</p>
+    </div>
+  </div>
+
+  <div class="card verde" style="margin-top:4px;">
+    <div class="card-icon">📜</div>
+    <h3>I diritti dei cittadini – Art. 24 Costituzione</h3>
+    <p>✅ <strong>Diritto di azione</strong>: puoi rivolgerti a un giudice per far valere i tuoi diritti<br>
+    ✅ <strong>Diritto di difesa</strong>: hai il diritto di difenderti con l'assistenza di un avvocato</p>
+  </div>
+
+  <!-- VERO/FALSO -->
+  <div class="hl warn" style="margin-top:24px;"><h4>⚡ Vero o Falso? Clicca sulla risposta giusta!</h4></div>
+
+  <div class="fill-card" id="vf1">
+    <p>«La funzione giurisdizionale consiste nel fare le leggi.»</p>
+    <div class="fill-opts">
+      <button class="fill-opt" onclick="checkVF('vf1','V','F','La funzione giurisdizionale consiste nell\'APPLICARE le leggi ai casi concreti, non nel farle (quello spetta al Parlamento).')">✅ Vero</button>
+      <button class="fill-opt" onclick="checkVF('vf1','F','F','Esatto! La funzione giurisdizionale consiste nell\'applicare le leggi ai casi concreti della vita reale.')">❌ Falso</button>
+    </div>
+    <div class="fb" id="vf1-fb"></div>
+  </div>
+
+  <div class="fill-card" id="vf2">
+    <p>«Se qualcuno mi ruba il portafoglio, posso picchiarlo per farmelo restituire.»</p>
+    <div class="fill-opts">
+      <button class="fill-opt" onclick="checkVF('vf2','V','F','No! Questo sarebbe esercizio arbitrario delle proprie ragioni (art. 393 c.p.), cioè un reato. Nessuno può farsi giustizia da solo.')">✅ Vero</button>
+      <button class="fill-opt" onclick="checkVF('vf2','F','F','Corretto! Farsi giustizia da soli è un reato. Bisogna rivolgersi all\'autorità giudiziaria.')">❌ Falso</button>
+    </div>
+    <div class="fb" id="vf2-fb"></div>
+  </div>
+
+  <div class="fill-card" id="vf3">
+    <p>«Il Pubblico Ministero emette la sentenza finale del processo penale.»</p>
+    <div class="fill-opts">
+      <button class="fill-opt" onclick="checkVF('vf3','V','F','No! Il PM svolge il ruolo di accusa (accusa l\'imputato). È il GIUDICE che emette la sentenza finale.')">✅ Vero</button>
+      <button class="fill-opt" onclick="checkVF('vf3','F','F','Esatto! Il PM fa l\'accusa. È il GIUDICE a emettere la sentenza dopo aver ascoltato tutte le parti.')">❌ Falso</button>
+    </div>
+    <div class="fb" id="vf3-fb"></div>
+  </div>
+</div>
+
+<!-- ============ INDIPENDENZA ============ -->
+<div id="section-indipendenza" class="section">
+  <h2 class="sec-title">Autonomia e Indipendenza della Magistratura</h2>
+  <p class="sec-sub">Perché i giudici devono essere liberi da ogni pressione</p>
+
+  <div class="hl dark">
+    <h4>📜 Art. 101 e Art. 104 Costituzione</h4>
+    <p>«La giustizia è amministrata <strong>in nome del popolo</strong>. I giudici sono soggetti soltanto alla legge.»<br>
+    «La magistratura costituisce un ordine <strong>autonomo e indipendente</strong> da ogni altro potere.»</p>
+  </div>
+
+  <div class="card" style="margin-top:18px;">
+    <div class="card-icon">🤔</div>
+    <h3>Perché è così importante l'indipendenza?</h3>
+    <p>Nei regimi illiberali (dittature), il giudice diventa uno strumento del Governo per <strong>colpire gli oppositori politici</strong>. In uno Stato democratico, invece, il giudice deve essere libero da qualsiasi pressione per poter applicare la legge in modo uguale per tutti.</p>
+  </div>
+
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:1.3rem;margin:24px 0 14px;color:var(--blu2);">I 3 Principi Garanti dell'Indipendenza</h3>
+
+  <div class="grid-3">
+    <div class="card" style="cursor:pointer;" onclick="toggleCard('ind1')">
+      <div class="card-icon">📝</div>
+      <h3>Concorso Pubblico <span style="float:right;font-size:.75rem;color:#aaa" id="ind1-ico">▼</span></h3>
+      <div id="ind1" style="display:none;margin-top:9px;"><p>I magistrati vengono selezionati <strong>solo in base alla preparazione</strong>, tramite un concorso pubblico aperto a tutti. Non ci sono favoritismi politici.</p></div>
+    </div>
+    <div class="card oro" style="cursor:pointer;" onclick="toggleCard('ind2')">
+      <div class="card-icon">🔄</div>
+      <h3>No Gerarchie Interne <span style="float:right;font-size:.75rem;color:#aaa" id="ind2-ico">▼</span></h3>
+      <div id="ind2" style="display:none;margin-top:9px;"><p>I giudici si distinguono per <strong>diversità di funzioni</strong>, non di rango. Nessun giudice può ordinare a un altro come decidere. Ciascuno ha la propria <strong>autonomia di giudizio</strong>.</p></div>
+    </div>
+    <div class="card rosso" style="cursor:pointer;" onclick="toggleCard('ind3')">
+      <div class="card-icon">🔒</div>
+      <h3>Inamovibilità <span style="float:right;font-size:.75rem;color:#aaa" id="ind3-ico">▼</span></h3>
+      <div id="ind3" style="display:none;margin-top:9px;"><p>I magistrati <strong>non possono essere rimossi o trasferiti</strong> in un'altra sede. Evita che qualcuno li ricatti: nessuno può promettergli un trasferimento favorevole in cambio di una sentenza comoda.</p></div>
+    </div>
+  </div>
+
+  <div class="card verde" style="margin-top:4px;">
+    <div class="card-icon">⚖️</div>
+    <h3>L'Imparzialità</h3>
+    <p>I giudici devono essere <strong>al di sopra delle parti</strong>, come un arbitro tra due squadre. Se un giudice è parente di una parte o ha inimicizia con essa, ha l'obbligo di <strong>astenersi</strong>. Le parti possono anche <strong>ricusarlo</strong> (chiedere che venga sostituito con un altro giudice).</p>
+  </div>
+
+  <!-- SCENARIO -->
+  <div class="scen-box" style="margin-top:24px;">
+    <h3>🎮 Scenario: cosa faresti?</h3>
+    <p>Il giudice Rossi sta per decidere un caso importante. Il ministro lo chiama al telefono e gli dice: "Se dai sentenza favorevole alla nostra parte, ti trasferisco a Milano (città che vuole). Altrimenti, ti mando in una sede lontana." Cosa dovrebbe fare il giudice Rossi?</p>
+    <div class="scen-opts">
+      <button class="scen-opt" onclick="checkScen(this, false, 'scen1')">A) Accettare: un trasferimento favorevole non è mica un reato</button>
+      <button class="scen-opt" onclick="checkScen(this, true, 'scen1')">B) Rifiutare e segnalare la pressione al CSM</button>
+      <button class="scen-opt" onclick="checkScen(this, false, 'scen1')">C) Dimettersi per evitare problemi</button>
+    </div>
+    <div class="scen-fb show" id="scen1">✅ <strong>Risposta B.</strong> Il giudice deve rifiutare SEMPRE le pressioni esterne e segnalarle al CSM. L'inamovibilità esiste proprio per proteggerlo da questo tipo di ricatti. Cedere significherebbe tradire il principio di indipendenza della Magistratura.</div>
+  </div>
+</div>
+
+<!-- ============ CSM ============ -->
+<div id="section-csm" class="section">
+  <h2 class="sec-title">Il CSM – Consiglio Superiore della Magistratura</h2>
+  <p class="sec-sub">L'organo di autogoverno della Magistratura</p>
+
+  <div class="card">
+    <div class="card-icon">🏛️</div>
+    <h3>Cos'è il CSM?</h3>
+    <p>Il CSM è l'<strong>organo di autogoverno</strong> della Magistratura: i magistrati «si governano da soli». Tutti i provvedimenti sui magistrati (assunzioni, promozioni, trasferimenti, sanzioni disciplinari) vengono adottati dal CSM, in modo da <strong>garantire la loro autonomia</strong> dal Governo.</p>
+  </div>
+
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:1.25rem;margin:22px 0 14px;color:var(--blu2);">Composizione: 33 membri totali</h3>
+
+  <div class="grid-3">
+    <div class="card nero">
+      <div class="card-icon">👑</div>
+      <h3>3 Membri di Diritto</h3>
+      <p>• <strong>Presidente della Repubblica</strong> (presiede il CSM)<br>• <strong>Primo Presidente</strong> della Cassazione<br>• <strong>Procuratore Generale</strong> della Cassazione</p>
+    </div>
+    <div class="card blu2" style="border-left-color:var(--blu2);">
+      <div class="card-icon">⚖️</div>
+      <h3>20 Membri Togati</h3>
+      <p>Eletti dagli <strong>stessi magistrati</strong> al loro interno. Si chiamano "togati" perché i magistrati indossano la toga.</p>
+    </div>
+    <div class="card oro">
+      <div class="card-icon">🎓</div>
+      <h3>10 Membri Laici</h3>
+      <p>Eletti dal <strong>Parlamento</strong> tra professori universitari di materie giuridiche e avvocati con almeno <strong>15 anni</strong> di attività.</p>
+    </div>
+  </div>
+
+  <div class="card verde" style="margin-top:4px;">
+    <div class="card-icon">🔧</div>
+    <h3>Il Ministro della Giustizia (Guardasigilli)</h3>
+    <p>Organizza gli <strong>uffici dell'amministrazione giudiziaria e carceraria</strong>. Può disporre ispezioni, ma <strong>NON può dare ordini ai magistrati né punirli</strong>. Se un magistrato si comporta male, il Ministro può avviare un procedimento disciplinare, ma a <strong>decidere sarà sempre il CSM</strong>.</p>
+  </div>
+
+  <!-- MATCHING -->
+  <div class="drag-area" style="margin-top:24px;">
+    <h3>🎮 Abbina la figura al suo ruolo nel CSM!</h3>
+    <p class="hint">Clicca prima su un elemento a sinistra, poi sul corrispondente a destra.</p>
+    <div class="match-grid">
+      <div>
+        <button class="match-btn" data-id="A" onclick="doMatch(this,'left',1)">A. Presiede il CSM</button>
+        <button class="match-btn" data-id="B" onclick="doMatch(this,'left',1)">B. Eletti dagli stessi magistrati (20)</button>
+        <button class="match-btn" data-id="C" onclick="doMatch(this,'left',1)">C. Eletti dal Parlamento (10)</button>
+        <button class="match-btn" data-id="D" onclick="doMatch(this,'left',1)">D. Organizza gli uffici giudiziari ma NON comanda i giudici</button>
+      </div>
+      <div>
+        <button class="match-btn" data-id="3" onclick="doMatch(this,'right',1)">1. Membri laici</button>
+        <button class="match-btn" data-id="1" onclick="doMatch(this,'right',1)">2. Membri togati</button>
+        <button class="match-btn" data-id="4" onclick="doMatch(this,'right',1)">3. Presidente della Repubblica</button>
+        <button class="match-btn" data-id="2" onclick="doMatch(this,'right',1)">4. Ministro della Giustizia</button>
+      </div>
+    </div>
+    <div class="match-score" id="ms1"></div>
+  </div>
+</div>
+
+<!-- ============ PROCESSI ============ -->
+<div id="section-processi" class="section">
+  <h2 class="sec-title">I Tre Tipi di Processo</h2>
+  <p class="sec-sub">Civile, penale, amministrativo: scopri le differenze</p>
+
+  <!-- CIVILE -->
+  <div class="card">
+    <div class="card-icon">🔵</div>
+    <h3>Il Processo Civile</h3>
+    <p><strong>Ambito:</strong> controversie tra privati (proprietà, contratti, famiglia, lavoro, risarcimento danni...)</p>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>👤 L'Attore</h3>
+      <p>Chi <strong>agisce in giudizio</strong>: chiede al giudice di condannare l'altra parte a fare qualcosa (pagare, restituire un bene, risarcire un danno).</p>
+    </div>
+    <div class="card oro">
+      <h3>👤 Il Convenuto</h3>
+      <p>Il soggetto <strong>contro cui</strong> l'attore agisce. Viene convocato davanti al giudice e deve difendersi.</p>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="flow-step">Atto di citazione<small>l'attore avvia</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Trattazione<small>prove e argomenti</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step oro">Sentenza<small>il giudice decide</small></div>
+  </div>
+  <div class="hl"><h4>💰 Sanzione civile tipica</h4><p>Risarcimento del danno O esecuzione della prestazione dovuta (pagare, consegnare un bene...).</p></div>
+
+  <!-- PENALE -->
+  <div class="card rosso" style="margin-top:18px;">
+    <div class="card-icon">🔴</div>
+    <h3>Il Processo Penale</h3>
+    <p><strong>Ambito:</strong> accertare se è stato commesso un reato. Le parti sono il <strong>PM (Pubblico Ministero)</strong> e l'<strong>imputato</strong>.</p>
+  </div>
+  <div class="hl danger">
+    <h4>⚠️ Presunzione di non colpevolezza – Art. 27 Cost.</h4>
+    <p>L'imputato è considerato <strong>innocente fino a condanna definitiva</strong>. Non si può trattarlo come colpevole prima del processo.</p>
+  </div>
+  <div class="flow">
+    <div class="flow-step" style="background:var(--nero);">Notizia di reato</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Indagini preliminari<small>PM + GIP</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step oro">Udienza preliminare<small>GUP decide</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step verde">Dibattimento<small>processo vero</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Sentenza<small>assoluzione/condanna</small></div>
+  </div>
+  <div class="hl danger"><h4>🔒 Sanzione penale tipica</h4><p><strong>Detentiva:</strong> arresto, reclusione, ergastolo &nbsp;|&nbsp; <strong>Pecuniaria:</strong> multa, ammenda</p></div>
+
+  <!-- AMMINISTRATIVO -->
+  <div class="card verde" style="margin-top:18px;">
+    <div class="card-icon">🟡</div>
+    <h3>Il Processo Amministrativo</h3>
+    <p><strong>Ambito:</strong> controversie tra privati cittadini e la <strong>Pubblica Amministrazione</strong>. Il cittadino si rivolge al giudice se ritiene che la PA abbia leso un suo <strong>interesse legittimo</strong>.</p>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>🗺️ TAR</h3>
+      <p><strong>Tribunale Amministrativo Regionale</strong>: giudice di primo grado, presente in ogni capoluogo di Regione.</p>
+    </div>
+    <div class="card oro">
+      <h3>🏛️ Consiglio di Stato</h3>
+      <p>Giudice di <strong>appello</strong> contro le sentenze del TAR. È uno dei giudici speciali ammessi dalla Costituzione.</p>
+    </div>
+  </div>
+
+  <!-- TABLE COMPARATIVA -->
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:1.2rem;margin:24px 0 12px;color:var(--blu2);">📊 Schema Comparativo</h3>
+  <table class="tbl">
+    <thead><tr><th>Tipo</th><th>Ambito</th><th>Le parti</th><th>Sanzione tipica</th></tr></thead>
+    <tbody>
+      <tr><td>⚖️ <strong>Civile</strong></td><td>Controversie tra privati</td><td>Attore vs Convenuto</td><td>Risarcimento / esecuzione</td></tr>
+      <tr><td>🔴 <strong>Penale</strong></td><td>Accertare un reato</td><td>PM vs Imputato</td><td>Pena detentiva e/o pecuniaria</td></tr>
+      <tr><td>🟡 <strong>Amministrativo</strong></td><td>Privati vs PA</td><td>Ricorrente vs Parte resistente</td><td>Annullamento dell'atto illegittimo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ SIMULAZIONE PROCESSO ============ -->
+<div id="section-processo-sim" class="section">
+  <h2 class="sec-title">🎭 Simulazione: Il Processo Penale</h2>
+  <p class="sec-sub">Entra nell'aula del tribunale e vivi il processo in prima persona!</p>
+
+  <div class="processo-wrap">
+    <div class="processo-header">
+      <h2>⚖️ TRIBUNALE DI ROMA – AULA 3</h2>
+      <p>Caso: Il furto al supermercato · Processo penale simulato</p>
+    </div>
+    <div class="processo-body">
+
+      <!-- CASO -->
+      <div class="caso-box">
+        <h3>📁 IL CASO</h3>
+        <p>Marco, 17 anni, è stato sorpreso dalle telecamere a nascondere un paio di cuffie (valore 89€) nella borsa, senza pagarle, mentre usciva da un supermercato. La sicurezza lo ha fermato all'uscita. La polizia è intervenuta e ha riferito il fatto al Pubblico Ministero. Marco nega di averlo fatto intenzionalmente: sostiene di aver dimenticato di pagare perché era distratto al telefono.</p>
+      </div>
+
+      <!-- PERSONAGGI -->
+      <h3 style="font-family:'Libre Baskerville',serif;margin-bottom:13px;font-size:1.1rem;">👥 I personaggi dell'aula</h3>
+      <div class="aula-tribunale">
+        <div class="aula-row">
+          <div class="persona giudice"><div class="p-icon">👨‍⚖️</div><div class="p-nome">Dott. Ferrari</div><div class="p-ruolo">GIUDICE</div></div>
+        </div>
+        <div class="aula-row">
+          <div class="persona pm"><div class="p-icon">⚖️</div><div class="p-nome">Dr.ssa Conti</div><div class="p-ruolo">P.M. (accusa)</div></div>
+          <div class="persona avvocato"><div class="p-icon">👔</div><div class="p-nome">Avv. Russo</div><div class="p-ruolo">DIFENSORE</div></div>
+        </div>
+        <div class="aula-row">
+          <div class="persona imputato"><div class="p-icon">🧑</div><div class="p-nome">Marco</div><div class="p-ruolo">IMPUTATO</div></div>
+        </div>
+        <div style="font-size:.78rem;color:#888;margin-top:8px;">LA LEGGE È UGUALE PER TUTTI</div>
+      </div>
+
+      <!-- FASI -->
+      <h3 style="font-family:'Libre Baskerville',serif;margin-bottom:12px;font-size:1.1rem;">📋 Segui le fasi del processo:</h3>
+      <div class="fase-navigator">
+        <button class="fase-btn active-fase" onclick="goFase(1)">1. Indagini</button>
+        <button class="fase-btn" onclick="goFase(2)" id="fase-btn-2">2. Udienza Prel.</button>
+        <button class="fase-btn" onclick="goFase(3)" id="fase-btn-3">3. Dibattimento</button>
+        <button class="fase-btn" onclick="goFase(4)" id="fase-btn-4">4. Sentenza</button>
+      </div>
+
+      <!-- FASE 1 -->
+      <div class="fase-content show" id="fase-1">
+        <div class="dialogo-box">
+          <div class="dialogo-chi pm-txt">🔍 PUBBLICO MINISTERO – Dr.ssa Conti</div>
+          <div class="dialogo-testo">"Abbiamo ricevuto la notizia di reato dalla polizia. Le telecamere mostrano chiaramente Marco che nasconde le cuffie nella borsa. Ho l'obbligo di aprire le indagini. Incarico la polizia giudiziaria di raccogliere ulteriori prove: le riprese video, la testimonianza della guardia di sicurezza e la ricevuta dello scontrino (che non esiste)."</div>
+        </div>
+        <div class="hl warn">
+          <h4>💡 Ricorda: l'obbligatorietà dell'azione penale</h4>
+          <p>Il PM non può scegliere se indagare o no: ha l'<strong>obbligo di agire</strong> ogni volta che riceve notizia di un reato. Questo serve a evitare che il PM decida arbitrariamente chi perseguire.</p>
+        </div>
+        <p style="font-size:.92rem;margin-bottom:14px;"><strong>❓ Domanda per te:</strong> Chi controlla che le indagini preliminari vengano svolte correttamente?</p>
+        <div class="scen-opts">
+          <button class="scen-opt" style="color:white;" onclick="checkFase1(this, false)">A) Il Ministro della Giustizia</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase1(this, true)">B) Il GIP (Giudice per le Indagini Preliminari)</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase1(this, false)">C) Il Presidente della Repubblica</button>
+        </div>
+        <div class="scen-fb" id="fase1-fb"></div>
+        <button class="check-btn" id="btn-fase1-avanti" style="display:none;margin-top:16px;" onclick="goFase(2)">Avanti: Udienza Preliminare →</button>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="fase-content" id="fase-2">
+        <div class="dialogo-box giud">
+          <div class="dialogo-chi giud-txt">👨‍⚖️ GUP – Giudice per l'Udienza Preliminare</div>
+          <div class="dialogo-testo">"Ho esaminato le prove raccolte dal PM. Le riprese video sono abbastanza chiare. Ritengo che ci siano elementi sufficienti per procedere. Non emetto sentenza di non luogo a procedere. Il caso va al dibattimento."</div>
+        </div>
+        <div class="dialogo-box pm">
+          <div class="dialogo-chi pm-txt">⚖️ PM – Dr.ssa Conti</div>
+          <div class="dialogo-testo">"Formulo l'imputazione: Marco è accusato del reato di furto aggravato, art. 624 del Codice Penale."</div>
+        </div>
+        <div class="hl">
+          <h4>💡 Il ruolo del GUP</h4>
+          <p>Il GUP fa da <strong>"porta"</strong> tra le indagini e il processo vero. Se le prove sono insufficienti, dice "non luogo a procedere" e il caso si chiude. Se le prove reggono, manda tutto al dibattimento.</p>
+        </div>
+        <p style="font-size:.92rem;margin-bottom:14px;"><strong>❓ Domanda:</strong> Cosa significa "formulare l'imputazione"?</p>
+        <div class="scen-opts">
+          <button class="scen-opt" style="color:white;" onclick="checkFase2(this,false)">A) Dichiarare l'imputato colpevole</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase2(this,true)">B) Specificare di quale reato è accusato l'imputato</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase2(this,false)">C) Decidere la pena da applicare</button>
+        </div>
+        <div class="scen-fb" id="fase2-fb"></div>
+        <button class="check-btn" id="btn-fase2-avanti" style="display:none;margin-top:16px;" onclick="goFase(3)">Avanti: Il Dibattimento →</button>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="fase-content" id="fase-3">
+        <div class="hl dark"><h4>🎭 IL DIBATTIMENTO – il cuore del processo</h4><p>Principi del <strong>giusto processo</strong> (Art. 111 Cost.): parità delle parti · giudice terzo e imparziale · durata ragionevole</p></div>
+        <div class="dialogo-box pm">
+          <div class="dialogo-chi pm-txt">⚖️ PM – Dr.ssa Conti (ACCUSA)</div>
+          <div class="dialogo-testo">"Signor giudice, le prove sono inequivocabili: le telecamere riprendono chiaramente Marco che nasconde le cuffie. La guardia di sicurezza ha confermato di averlo visto uscire senza pagare. L'imputato sapeva cosa stava facendo."</div>
+        </div>
+        <div class="dialogo-box avv">
+          <div class="dialogo-chi avv-txt">👔 AVVOCATO DIFENSORE – Avv. Russo (DIFESA)</div>
+          <div class="dialogo-testo">"Signor giudice, il mio assistito era distratto al telefono. Non c'era intenzione di rubare. Il furto richiede il dolo, cioè la volontà cosciente di fare il gesto. Marco è un ragazzo senza precedenti penali. Chiedo l'assoluzione."</div>
+        </div>
+        <p style="font-size:.92rem;margin:14px 0;"><strong>❓ Ora sei tu il Giudice Ferrari.</strong> Cosa decidi? Valuta le prove e scegli la sentenza:</p>
+        <div class="scen-opts">
+          <button class="scen-opt" style="color:white;" onclick="checkFase3(this,'condanna')">A) CONDANNA: le riprese video dimostrano il furto. La distrazione è una scusa.</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase3(this,'assoluzione')">B) ASSOLUZIONE: il dubbio sull'intenzione deve andare a favore dell'imputato.</button>
+          <button class="scen-opt" style="color:white;" onclick="checkFase3(this,'patteggiamento')">C) PATTEGGIAMENTO: propongo una pena ridotta se l'imputato ammette il fatto.</button>
+        </div>
+        <div class="scen-fb" id="fase3-fb"></div>
+        <button class="check-btn" id="btn-fase3-avanti" style="display:none;margin-top:16px;" onclick="goFase(4)">Avanti: La Sentenza →</button>
+      </div>
+
+      <!-- FASE 4 -->
+      <div class="fase-content" id="fase-4">
+        <div class="dialogo-box giud">
+          <div class="dialogo-chi giud-txt">👨‍⚖️ GIUDICE FERRARI – La Sentenza</div>
+          <div class="dialogo-testo">"In nome del popolo italiano, il Tribunale di Roma così pronuncia: l'imputato Marco è riconosciuto colpevole del reato di furto aggravato. Viste le circostanze attenuanti (incensurato, giovane età, valore modesto della merce), si applica la pena di 6 mesi di reclusione, sospesa condizionalmente per 5 anni."</div>
+        </div>
+        <div class="hl warn">
+          <h4>💡 La sospensione condizionale della pena</h4>
+          <p>Significa che Marco <strong>non va in carcere</strong>, ma se nei prossimi 5 anni commette un altro reato, dovrà scontare questa pena più quella nuova. È una "seconda chance".</p>
+        </div>
+        <div class="verdetto-box show">
+          <h2>⚖️ PROCESSO COMPLETATO!</h2>
+          <p>Hai seguito tutte le fasi del processo penale:<br><br>
+          <strong>Notizia di reato → Indagini (PM + GIP) → Udienza preliminare (GUP) → Dibattimento → Sentenza</strong><br><br>
+          Hai imparato che il processo penale tutela sia la società (punisce i reati) sia l'imputato (presunzione di innocenza, diritto di difesa, giusto processo).</p>
+          <button class="verdetto-btn" onclick="resetProcesso()">🔄 Ricomincia il processo</button>
+        </div>
+
+        <div class="hl" style="margin-top:18px;">
+          <h4>🤔 Riflessione finale</h4>
+          <p>In un processo reale, Marco potrebbe anche <strong>fare appello</strong> se non è soddisfatto della sentenza. Questo è il principio dei <strong>gradi di giudizio</strong>: la possibilità di rivedere la sentenza in un tribunale superiore per garantire che la giustizia sia davvero equa.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div id="section-quiz" class="section">
+  <h2 class="sec-title">Quiz Finale 🎯</h2>
+  <p class="sec-sub">10 domande per testare tutto quello che hai imparato</p>
+
+  <div class="score-bar">
+    <div class="score-num" id="qscore">0/10</div>
+    <div><div style="font-weight:600;margin-bottom:3px;">Il tuo punteggio</div><div class="score-label">Rispondi a tutte le domande</div></div>
+    <button class="reset-btn" onclick="resetQuiz()">↺ Ricomincia</button>
+  </div>
+
+  <div id="quiz-container">
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 1 di 10</div>
+      <div class="quiz-q">La funzione giurisdizionale consiste nel…</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,1)">A) Fare le leggi</button>
+        <button class="opt-btn" onclick="ansQ(this,1,1)">B) Applicare le norme giuridiche ai casi concreti della vita</button>
+        <button class="opt-btn" onclick="ansQ(this,0,1)">C) Eleggere il Parlamento</button>
+        <button class="opt-btn" onclick="ansQ(this,0,1)">D) Organizzare la Pubblica Amministrazione</button>
+      </div>
+      <div class="fb" id="q1-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 2 di 10</div>
+      <div class="quiz-q">L'Art. 104 della Costituzione stabilisce che la Magistratura è…</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,2)">A) Dipendente dal Governo</button>
+        <button class="opt-btn" onclick="ansQ(this,0,2)">B) Controllata dal Parlamento</button>
+        <button class="opt-btn" onclick="ansQ(this,1,2)">C) Autonoma e indipendente da ogni altro potere</button>
+        <button class="opt-btn" onclick="ansQ(this,0,2)">D) Presieduta dal Presidente della Repubblica</button>
+      </div>
+      <div class="fb" id="q2-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 3 di 10</div>
+      <div class="quiz-q">Cos'è l'"inamovibilità" dei magistrati?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,3)">A) I magistrati non possono fare appello</button>
+        <button class="opt-btn" onclick="ansQ(this,1,3)">B) I magistrati non possono essere rimossi o trasferiti di sede</button>
+        <button class="opt-btn" onclick="ansQ(this,0,3)">C) I magistrati non possono dimettersi</button>
+        <button class="opt-btn" onclick="ansQ(this,0,3)">D) I magistrati non possono essere eletti</button>
+      </div>
+      <div class="fb" id="q3-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 4 di 10</div>
+      <div class="quiz-q">Nel processo civile, l'attore è…</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,4)">A) L'accusato</button>
+        <button class="opt-btn" onclick="ansQ(this,0,4)">B) Il giudice</button>
+        <button class="opt-btn" onclick="ansQ(this,1,4)">C) Chi agisce in giudizio per far valere i propri diritti</button>
+        <button class="opt-btn" onclick="ansQ(this,0,4)">D) Il Pubblico Ministero</button>
+      </div>
+      <div class="fb" id="q4-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 5 di 10</div>
+      <div class="quiz-q">Nel processo penale, chi rappresenta la "pubblica accusa"?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,5)">A) Il giudice</button>
+        <button class="opt-btn" onclick="ansQ(this,1,5)">B) Il Pubblico Ministero (PM)</button>
+        <button class="opt-btn" onclick="ansQ(this,0,5)">C) L'avvocato difensore</button>
+        <button class="opt-btn" onclick="ansQ(this,0,5)">D) Il CSM</button>
+      </div>
+      <div class="fb" id="q5-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 6 di 10</div>
+      <div class="quiz-q">Il CSM è composto da quanti membri?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,6)">A) 15</button>
+        <button class="opt-btn" onclick="ansQ(this,0,6)">B) 20</button>
+        <button class="opt-btn" onclick="ansQ(this,1,6)">C) 33</button>
+        <button class="opt-btn" onclick="ansQ(this,0,6)">D) 50</button>
+      </div>
+      <div class="fb" id="q6-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 7 di 10</div>
+      <div class="quiz-q">Cosa significa la "presunzione di non colpevolezza" (Art. 27 Cost.)?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,7)">A) L'imputato non può essere condannato</button>
+        <button class="opt-btn" onclick="ansQ(this,1,7)">B) L'imputato è considerato innocente fino a condanna definitiva</button>
+        <button class="opt-btn" onclick="ansQ(this,0,7)">C) L'imputato ha sempre ragione</button>
+        <button class="opt-btn" onclick="ansQ(this,0,7)">D) Il processo si può saltare</button>
+      </div>
+      <div class="fb" id="q7-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 8 di 10</div>
+      <div class="quiz-q">Il TAR (Tribunale Amministrativo Regionale) si occupa di…</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,8)">A) Reati penali gravi</button>
+        <button class="opt-btn" onclick="ansQ(this,0,8)">B) Controversie tra privati</button>
+        <button class="opt-btn" onclick="ansQ(this,1,8)">C) Controversie tra cittadini e la Pubblica Amministrazione</button>
+        <button class="opt-btn" onclick="ansQ(this,0,8)">D) Elezioni politiche</button>
+      </div>
+      <div class="fb" id="q8-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 9 di 10</div>
+      <div class="quiz-q">Cosa fa il GUP (Giudice per l'Udienza Preliminare)?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,9)">A) Dirige le indagini preliminari</button>
+        <button class="opt-btn" onclick="ansQ(this,1,9)">B) Decide se mandare il caso al dibattimento o chiuderlo</button>
+        <button class="opt-btn" onclick="ansQ(this,0,9)">C) Emette la sentenza definitiva</button>
+        <button class="opt-btn" onclick="ansQ(this,0,9)">D) Nomina i membri del CSM</button>
+      </div>
+      <div class="fb" id="q9-fb"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="quiz-num">Domanda 10 di 10</div>
+      <div class="quiz-q">Il Ministro della Giustizia può dare ordini ai magistrati?</div>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,0,10)">A) Sì, in caso di urgenza</button>
+        <button class="opt-btn" onclick="ansQ(this,0,10)">B) Sì, sempre</button>
+        <button class="opt-btn" onclick="ansQ(this,1,10)">C) No, mai: può solo organizzare gli uffici giudiziari</button>
+        <button class="opt-btn" onclick="ansQ(this,0,10)">D) Sì, ma solo il Guardasigilli</button>
+      </div>
+      <div class="fb" id="q10-fb"></div>
+    </div>
+
+  </div>
+
+  <div id="quiz-final" style="display:none;margin-top:22px;">
+    <div class="card" style="text-align:center;padding:36px;border-left:none;background:linear-gradient(135deg,#e8f0fa,#d6e4f7);">
+      <div style="font-size:2.8rem;margin-bottom:11px;" id="q-emoji"></div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:1.9rem;color:var(--blu2);margin-bottom:7px;" id="q-score-txt"></div>
+      <div style="font-size:1rem;color:#555;" id="q-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ESERCIZI ============ -->
+<div id="section-esercizi" class="section">
+  <h2 class="sec-title">Esercizi Pratici 🔨</h2>
+  <p class="sec-sub">Learning by doing: impara facendo!</p>
+
+  <!-- ES1: DRAG DROP tipo processo -->
+  <div class="drag-area">
+    <h3>Esercizio 1 – Quale tipo di processo?</h3>
+    <p class="hint">Trascina ogni caso nel tipo di processo corretto.</p>
+    <div class="drag-pool" id="pool1">
+      <div class="drag-item" draggable="true" data-cat="civile" ondragstart="ds(event)">Lite tra vicini per il muro di confine</div>
+      <div class="drag-item rosso" draggable="true" data-cat="penale" ondragstart="ds(event)">Rapina in banca</div>
+      <div class="drag-item verde" draggable="true" data-cat="amm" ondragstart="ds(event)">Concorso pubblico irregolare</div>
+      <div class="drag-item" draggable="true" data-cat="civile" ondragstart="ds(event)">Divorzio tra coniugi</div>
+      <div class="drag-item rosso" draggable="true" data-cat="penale" ondragstart="ds(event)">Aggressione fisica</div>
+      <div class="drag-item verde" draggable="true" data-cat="amm" ondragstart="ds(event)">Multa stradale contestata al Comune</div>
+    </div>
+    <div class="drop-zones">
+      <div class="drop-zone" id="z-civile" data-zone="civile" ondragover="ad(event)" ondrop="dp1(event)" ondragleave="dl(event)">
+        <h4>🔵 Civile</h4><div class="dropped" id="d-civile"></div>
+      </div>
+      <div class="drop-zone" id="z-penale" data-zone="penale" ondragover="ad(event)" ondrop="dp1(event)" ondragleave="dl(event)">
+        <h4>🔴 Penale</h4><div class="dropped" id="d-penale"></div>
+      </div>
+      <div class="drop-zone" id="z-amm" data-zone="amm" ondragover="ad(event)" ondrop="dp1(event)" ondragleave="dl(event)">
+        <h4>🟡 Amministrativo</h4><div class="dropped" id="d-amm"></div>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkEx1()">✔ Verifica</button>
+    <button class="rst-btn" onclick="resetEx1()">↺ Ricomincia</button>
+    <div class="drag-result" id="ex1-result"></div>
+  </div>
+
+  <!-- ES2: ORDINA LE FASI -->
+  <div class="drag-area">
+    <h3>Esercizio 2 – Ordina le fasi del processo penale!</h3>
+    <p class="hint">Trascina le fasi nell'ordine corretto (da sinistra a destra).</p>
+    <div class="drag-pool" id="pool2">
+      <div class="drag-item oro" draggable="true" data-val="4" ondragstart="ds(event)">Dibattimento</div>
+      <div class="drag-item rosso" draggable="true" data-val="1" ondragstart="ds(event)">Notizia di reato</div>
+      <div class="drag-item verde" draggable="true" data-val="5" ondragstart="ds(event)">Sentenza</div>
+      <div class="drag-item" draggable="true" data-val="2" ondragstart="ds(event)">Indagini preliminari</div>
+      <div class="drag-item" draggable="true" data-val="3" ondragstart="ds(event)" style="background:#5B2D8E;">Udienza preliminare</div>
+    </div>
+    <div class="drop-zones-2" style="grid-template-columns:1fr;">
+      <div class="drop-zone" id="z-ordine" ondragover="ad(event)" ondrop="dpOrd(event)" ondragleave="dl(event)">
+        <h4>→ Ordine corretto</h4><div class="dropped" id="d-ordine"></div>
+      </div>
+    </div>
+    <button class="check-btn" onclick="checkOrd()">✔ Verifica</button>
+    <button class="rst-btn" onclick="resetOrd()">↺ Ricomincia</button>
+    <div class="drag-result" id="ord-result"></div>
+  </div>
+
+  <!-- ES3: ABBINA PRINCIPI INDIPENDENZA -->
+  <div class="drag-area">
+    <h3>Esercizio 3 – Abbina il principio alla spiegazione</h3>
+    <p class="hint">Clicca prima sul principio a sinistra, poi sulla descrizione giusta a destra.</p>
+    <div class="match-grid">
+      <div>
+        <button class="match-btn" data-id="C" onclick="doMatch(this,'left',2)">📝 Concorso pubblico</button>
+        <button class="match-btn" data-id="G" onclick="doMatch(this,'left',2)">🔄 No gerarchie interne</button>
+        <button class="match-btn" data-id="I" onclick="doMatch(this,'left',2)">🔒 Inamovibilità</button>
+        <button class="match-btn" data-id="P" onclick="doMatch(this,'left',2)">⚖️ Imparzialità</button>
+      </div>
+      <div>
+        <button class="match-btn" data-id="I" onclick="doMatch(this,'right',2)">I magistrati non possono essere rimossi o trasferiti contro la loro volontà</button>
+        <button class="match-btn" data-id="P" onclick="doMatch(this,'right',2)">Il giudice deve essere al di sopra delle parti: può astenersi o essere ricusato</button>
+        <button class="match-btn" data-id="C" onclick="doMatch(this,'right',2)">I magistrati vengono selezionati solo in base alla preparazione, senza favoritismi</button>
+        <button class="match-btn" data-id="G" onclick="doMatch(this,'right',2)">I giudici si distinguono per funzione, non per rango: nessuno comanda un altro</button>
+      </div>
+    </div>
+    <div class="match-score" id="ms2"></div>
+  </div>
+
+  <!-- ES4: COMPLETA LE FRASI -->
+  <div class="drag-area">
+    <h3>Esercizio 4 – Completa le frasi!</h3>
+    <p class="hint">Scegli la parola giusta per completare ogni frase.</p>
+
+    <div class="fill-card" id="f1">
+      <p>Nel processo civile, chi viene chiamato in giudizio si chiama _______________.</p>
+      <div class="fill-opts">
+        <button class="fill-opt" onclick="chkFill('f1','W','attore')">Attore</button>
+        <button class="fill-opt" onclick="chkFill('f1','C','convenuto')">Convenuto</button>
+        <button class="fill-opt" onclick="chkFill('f1','W','imputato')">Imputato</button>
+      </div>
+      <div class="fb" id="f1-fb"></div>
+    </div>
+
+    <div class="fill-card" id="f2">
+      <p>Il CSM è l'organo di _______________ della Magistratura.</p>
+      <div class="fill-opts">
+        <button class="fill-opt" onclick="chkFill('f2','W','controllo governativo')">Controllo governativo</button>
+        <button class="fill-opt" onclick="chkFill('f2','W','supervisione parlamentare')">Supervisione parlamentare</button>
+        <button class="fill-opt" onclick="chkFill('f2','C','autogoverno')">Autogoverno</button>
+      </div>
+      <div class="fb" id="f2-fb"></div>
+    </div>
+
+    <div class="fill-card" id="f3">
+      <p>L'Art. _______________ della Costituzione stabilisce la presunzione di non colpevolezza.</p>
+      <div class="fill-opts">
+        <button class="fill-opt" onclick="chkFill('f3','W','24')">Art. 24</button>
+        <button class="fill-opt" onclick="chkFill('f3','C','27')">Art. 27</button>
+        <button class="fill-opt" onclick="chkFill('f3','W','101')">Art. 101</button>
+      </div>
+      <div class="fb" id="f3-fb"></div>
+    </div>
+
+    <div class="fill-card" id="f4">
+      <p>Nel processo amministrativo, il cittadino che ricorre si chiama _______________.</p>
+      <div class="fill-opts">
+        <button class="fill-opt" onclick="chkFill('f4','W','attore')">Attore</button>
+        <button class="fill-opt" onclick="chkFill('f4','W','imputato')">Imputato</button>
+        <button class="fill-opt" onclick="chkFill('f4','C','ricorrente')">Ricorrente</button>
+      </div>
+      <div class="fb" id="f4-fb"></div>
+    </div>
+  </div>
+
+  <!-- ES5: SCENARIO CSM -->
+  <div class="scen-box">
+    <h3>🎮 Esercizio 5 – Scenario reale</h3>
+    <p>Il Ministro della Giustizia viene a sapere che il giudice Bianchi ha pronunciato sentenze molto lente e ha ricevuto lamentele dagli avvocati. Il Ministro vuole sanzionarlo. Cosa può fare?</p>
+    <div class="scen-opts">
+      <button class="scen-opt" onclick="checkScen(this, false, 'scen2')">A) Può licenziarlo direttamente</button>
+      <button class="scen-opt" onclick="checkScen(this, false, 'scen2')">B) Può trasferirlo in una sede lontana come punizione</button>
+      <button class="scen-opt" onclick="checkScen(this, true, 'scen2')">C) Può avviare un procedimento disciplinare, ma sarà il CSM a decidere</button>
+      <button class="scen-opt" onclick="checkScen(this, false, 'scen2')">D) Non può fare nulla</button>
+    </div>
+    <div class="scen-fb show" id="scen2">✅ <strong>Risposta C.</strong> Il Ministro può solo avviare il procedimento disciplinare. Ma è il <strong>CSM</strong> a decidere l'eventuale sanzione. Questo è il meccanismo che garantisce l'indipendenza della Magistratura dal potere esecutivo.</div>
+  </div>
+</div>
+
+<!-- ============ GLOSSARIO ============ -->
+<div id="section-glossario" class="section">
+  <h2 class="sec-title">Glossario 📖</h2>
+  <p class="sec-sub">Clicca su ogni termine per vedere la definizione</p>
+  <div class="card" style="padding:10px 26px;">
+    <div class="glos-item" onclick="tgGlos('g1')"><div class="glos-term">Funzione giurisdizionale <span id="g1a">▼</span></div><div class="glos-def" id="g1">Applicare le norme giuridiche ai casi concreti della vita per risolvere conflitti e applicare sanzioni.</div></div>
+    <div class="glos-item" onclick="tgGlos('g2')"><div class="glos-term">Magistratura giudicante <span id="g2a">▼</span></div><div class="glos-def" id="g2">I giudici: celebrano i processi con imparzialità ed emettono la sentenza finale.</div></div>
+    <div class="glos-item" onclick="tgGlos('g3')"><div class="glos-term">Magistratura requirente <span id="g3a">▼</span></div><div class="glos-def" id="g3">I Pubblici Ministeri (PM): dirigono le indagini e svolgono il ruolo della pubblica accusa.</div></div>
+    <div class="glos-item" onclick="tgGlos('g4')"><div class="glos-term">CSM – Consiglio Superiore della Magistratura <span id="g4a">▼</span></div><div class="glos-def" id="g4">Organo di autogoverno della Magistratura (33 membri: 3 di diritto, 20 togati, 10 laici). Gestisce assunzioni, promozioni, trasferimenti e sanzioni dei magistrati.</div></div>
+    <div class="glos-item" onclick="tgGlos('g5')"><div class="glos-term">Inamovibilità <span id="g5a">▼</span></div><div class="glos-def" id="g5">I magistrati non possono essere rimossi o trasferiti contro la loro volontà. Principio che tutela la loro indipendenza da pressioni esterne.</div></div>
+    <div class="glos-item" onclick="tgGlos('g6')"><div class="glos-term">Presunzione di non colpevolezza <span id="g6a">▼</span></div><div class="glos-def" id="g6">Art. 27 Cost.: l'imputato è considerato innocente fino a condanna definitiva. Non può essere trattato come colpevole prima del processo.</div></div>
+    <div class="glos-item" onclick="tgGlos('g7')"><div class="glos-term">GIP – Giudice per le Indagini Preliminari <span id="g7a">▼</span></div><div class="glos-def" id="g7">Controlla la correttezza delle indagini preliminari condotte dal PM e dalla polizia giudiziaria.</div></div>
+    <div class="glos-item" onclick="tgGlos('g8')"><div class="glos-term">GUP – Giudice per l'Udienza Preliminare <span id="g8a">▼</span></div><div class="glos-def" id="g8">Decide se le prove raccolte sono sufficienti per andare al dibattimento. Se no, emette sentenza di "non luogo a procedere".</div></div>
+    <div class="glos-item" onclick="tgGlos('g9')"><div class="glos-term">Dibattimento <span id="g9a">▼</span></div><div class="glos-def" id="g9">Fase centrale del processo penale: le parti si confrontano davanti al giudice in condizione di parità (contraddittorio). Al termine il giudice emette la sentenza.</div></div>
+    <div class="glos-item" onclick="tgGlos('g10')"><div class="glos-term">Attore / Convenuto <span id="g10a">▼</span></div><div class="glos-def" id="g10">Nel processo civile: l'attore è chi agisce in giudizio, il convenuto è chi viene chiamato a difendersi.</div></div>
+    <div class="glos-item" onclick="tgGlos('g11')"><div class="glos-term">TAR – Tribunale Amministrativo Regionale <span id="g11a">▼</span></div><div class="glos-def" id="g11">Giudice di primo grado nelle controversie tra cittadini e Pubblica Amministrazione. Presente in ogni capoluogo di Regione.</div></div>
+    <div class="glos-item" onclick="tgGlos('g12')"><div class="glos-term">Patteggiamento <span id="g12a">▼</span></div><div class="glos-def" id="g12">Rito alternativo al processo ordinario: imputato e PM si accordano sulla pena da applicare. L'imputato si dichiara colpevole in cambio di una pena ridotta.</div></div>
+    <div class="glos-item" onclick="tgGlos('g13')"><div class="glos-term">Guardasigilli <span id="g13a">▼</span></div><div class="glos-def" id="g13">Altro nome del Ministro della Giustizia. Organizza gli uffici giudiziari e carcerari ma NON può dare ordini ai magistrati né punirli.</div></div>
+  </div>
+</div>
+
+<footer>⚖️ Lezione Interattiva – La Magistratura · Unità H · Educazione Civica · Classe Seconda</footer>
+
+<script>
+// ── TAB ──────────────────────────────────────────────────
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── TOGGLE CARDS ──────────────────────────────────────────
+function toggleCard(id){
+  const el=document.getElementById(id);
+  const ico=document.getElementById(id+'-ico');
+  if(el.style.display==='none'){el.style.display='block';ico.textContent='▲ chiudi';}
+  else{el.style.display='none';ico.textContent='▼';}
+}
+
+// ── VERO/FALSO ────────────────────────────────────────────
+function checkVF(id,ans,correct,msg){
+  const card=document.getElementById(id);
+  const fb=document.getElementById(id+'-fb');
+  card.querySelectorAll('.fill-opt').forEach(b=>b.disabled=true);
+  if(ans===correct){event.target.classList.add('correct');fb.textContent='✅ '+msg;fb.className='fb show ok';}
+  else{event.target.classList.add('wrong');fb.textContent='❌ '+msg;fb.className='fb show ko';}
+}
+
+// ── QUIZ ─────────────────────────────────────────────────
+let qScore=0,qAns=new Set();
+const qOkMsg=['La funzione giurisdizionale si occupa di APPLICARE le leggi, non di farle (quello è il Parlamento).','Art. 104 Cost.: la Magistratura è autonoma e indipendente da ogni altro potere dello Stato.','L\'inamovibilità protegge i magistrati da ricatti: non possono essere rimossi né trasferiti contro la loro volontà.','L\'attore è chi inizia la causa, chi agisce in giudizio per far valere i propri diritti.','Il PM (Pubblico Ministero) agisce in nome dello Stato e ha l\'obbligo di agire ogni volta che riceve notizia di un reato.','Il CSM è composto da 33 membri: 3 di diritto + 20 togati + 10 laici.','Art. 27 Cost.: presunzione di innocenza fino a condanna definitiva. Pilastro fondamentale dello Stato di diritto.','Il TAR (e il Consiglio di Stato in appello) si occupa delle controversie tra privati e la PA.','Il GUP fa da filtro: valuta se le prove sono sufficienti e decide se andare al dibattimento o chiudere il caso.','Il Ministro può solo organizzare gli uffici. Eventuali sanzioni ai magistrati spettano al CSM, non al Ministro.'];
+const qKoMsg=['❌ La funzione giurisdizionale consiste nell\'applicare le leggi ai casi concreti.','❌ L\'Art. 104 dice che la Magistratura è autonoma e indipendente da ogni altro potere.','❌ L\'inamovibilità significa che i magistrati non possono essere rimossi o trasferiti contro la loro volontà.','❌ L\'attore è chi agisce in giudizio, non l\'accusato (quello si chiama imputato).','❌ È il PM (Pubblico Ministero) a fare l\'accusa in nome dello Stato.','❌ Il CSM ha 33 membri in totale: 3 di diritto + 20 togati + 10 laici.','❌ La presunzione di non colpevolezza significa che l\'imputato è innocente FINO a condanna definitiva.','❌ Il TAR giudica le controversie tra cittadini e la Pubblica Amministrazione.','❌ Il GUP decide se mandare il caso al dibattimento o emettere sentenza di non luogo a procedere.','❌ Il Ministro NON può dare ordini ai magistrati. Può solo avviare procedimenti disciplinari, ma è il CSM a decidere.'];
+
+function ansQ(btn,ok,n){
+  if(qAns.has(n))return;
+  qAns.add(n);
+  btn.closest('.quiz-card').querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('q'+n+'-fb');
+  if(ok){btn.classList.add('correct');qScore++;fb.textContent='✅ '+qOkMsg[n-1];fb.className='fb show ok';}
+  else{btn.classList.add('wrong');fb.textContent=qKoMsg[n-1];fb.className='fb show ko';}
+  document.getElementById('qscore').textContent=qScore+'/'+qAns.size;
+  if(qAns.size===10)showQFinal();
+}
+
+function showQFinal(){
+  const f=document.getElementById('quiz-final');f.style.display='block';
+  const p=qScore/10;
+  let e,m;
+  if(p===1){e='🏆';m='Perfetto! Conosci alla perfezione la Magistratura. Bravo!';}
+  else if(p>=.8){e='⭐';m='Ottimo! Hai una solida conoscenza. Rileggi le risposte sbagliate.';}
+  else if(p>=.6){e='👍';m='Buon risultato! Alcune parti meritano ancora un po\' di studio.';}
+  else{e='📚';m='Continua a studiare! Rileggi le sezioni e poi riprova.';}
+  document.getElementById('q-emoji').textContent=e;
+  document.getElementById('q-score-txt').textContent=qScore+' / 10';
+  document.getElementById('q-msg').textContent=m;
+  f.scrollIntoView({behavior:'smooth'});
+}
+
+function resetQuiz(){
+  qScore=0;qAns.clear();
+  document.getElementById('qscore').textContent='0/10';
+  document.getElementById('quiz-final').style.display='none';
+  document.querySelectorAll('.quiz-card .opt-btn').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong');});
+  for(let i=1;i<=10;i++){const fb=document.getElementById('q'+i+'-fb');if(fb){fb.className='fb';fb.textContent='';}}
+}
+
+// ── DRAG & DROP ───────────────────────────────────────────
+let dragged=null;
+function ds(e){dragged=e.target;e.dataTransfer.setData('text',e.target.dataset.val||'');}
+function ad(e){e.preventDefault();e.currentTarget.classList.add('over');}
+function dl(e){e.currentTarget.classList.remove('over');}
+
+function dp1(e){e.preventDefault();e.currentTarget.classList.remove('over');if(dragged)document.getElementById('d-'+e.currentTarget.dataset.zone).appendChild(dragged);}
+function checkEx1(){
+  let ok=true;
+  ['civile','penale','amm'].forEach(z=>{
+    document.getElementById('d-'+z).querySelectorAll('.drag-item').forEach(it=>{if(it.dataset.cat!==z)ok=false;});
+  });
+  const tot=document.getElementById('d-civile').children.length+document.getElementById('d-penale').children.length+document.getElementById('d-amm').children.length;
+  const r=document.getElementById('ex1-result');
+  if(tot<6){r.textContent='⚠️ Classifica tutti gli elementi!';r.className='drag-result show ko';return;}
+  if(ok){r.textContent='✅ Perfetto! Civile: liti tra privati. Penale: reati. Amministrativo: privati vs PA.';r.className='drag-result show ok';}
+  else{r.textContent='❌ Qualcosa non va. Civile=liti tra privati. Penale=reati. Amministrativo=privati vs PA.';r.className='drag-result show ko';}
+}
+function resetEx1(){
+  const pool=document.getElementById('pool1');
+  ['civile','penale','amm'].forEach(z=>{document.getElementById('d-'+z).querySelectorAll('.drag-item').forEach(el=>pool.appendChild(el));});
+  document.getElementById('ex1-result').className='drag-result';
+}
+
+function dpOrd(e){e.preventDefault();e.currentTarget.classList.remove('over');if(dragged)document.getElementById('d-ordine').appendChild(dragged);}
+function checkOrd(){
+  const items=[...document.getElementById('d-ordine').children];
+  const vals=items.map(i=>parseInt(i.dataset.val));
+  const r=document.getElementById('ord-result');
+  if(vals.length<5){r.textContent='⚠️ Inserisci tutte le 5 fasi!';r.className='drag-result show ko';return;}
+  if(JSON.stringify(vals)===JSON.stringify([1,2,3,4,5])){r.textContent='✅ Perfetto! Ordine corretto: Notizia di reato → Indagini preliminari → Udienza preliminare → Dibattimento → Sentenza';r.className='drag-result show ok';}
+  else{r.textContent='❌ Non è corretto. L\'ordine giusto è: 1.Notizia di reato → 2.Indagini → 3.Udienza preliminare → 4.Dibattimento → 5.Sentenza';r.className='drag-result show ko';}
+}
+function resetOrd(){
+  const pool=document.getElementById('pool2');
+  document.getElementById('d-ordine').querySelectorAll('.drag-item').forEach(el=>pool.appendChild(el));
+  document.getElementById('ord-result').className='drag-result';
+}
+
+// ── MATCHING ─────────────────────────────────────────────
+const matchSel={1:{left:null,right:null},2:{left:null,right:null}};
+const matchCorrect1={A:'3',B:'2',C:'1',D:'4'};
+const matchCorrect2={C:'C',G:'G',I:'I',P:'P'};
+let matchDone={1:0,2:0};
+
+function doMatch(btn,side,gameId){
+  if(btn.classList.contains('matched'))return;
+  const g=gameId;
+  const allBtns=btn.closest('.match-grid').querySelectorAll('.match-btn');
+  allBtns.forEach(b=>{if(!b.classList.contains('matched'))b.classList.remove('selected');});
+  matchSel[g][side]=btn;btn.classList.add('selected');
+  if(matchSel[g].left&&matchSel[g].right){
+    const lId=matchSel[g].left.dataset.id, rId=matchSel[g].right.dataset.id;
+    const correct=g===1?(matchCorrect1[lId]===rId):(lId===rId);
+    if(correct){
+      matchSel[g].left.classList.add('matched');matchSel[g].right.classList.add('matched');
+      matchDone[g]++;
+      if(matchDone[g]===(g===1?4:4)){
+        const sc=document.getElementById('ms'+g);
+        sc.textContent='🎉 Perfetto! Hai abbinato tutto correttamente!';sc.style.display='block';
+      }
+    } else {
+      matchSel[g].left.classList.add('wrong-match');matchSel[g].right.classList.add('wrong-match');
+      setTimeout(()=>{
+        if(matchSel[g].left)matchSel[g].left.classList.remove('wrong-match','selected');
+        if(matchSel[g].right)matchSel[g].right.classList.remove('wrong-match','selected');
+        matchSel[g]={left:null,right:null};
+      },600);
+      return;
+    }
+    matchSel[g]={left:null,right:null};
+  }
+}
+
+// ── FILL BLANKS ───────────────────────────────────────────
+function chkFill(id,ans,label){
+  const card=document.getElementById(id);
+  const fb=document.getElementById(id+'-fb');
+  card.querySelectorAll('.fill-opt').forEach(b=>b.disabled=true);
+  if(ans==='C'){event.target.classList.add('correct');fb.textContent='✅ Corretto: '+label+'!';fb.className='fb show ok';}
+  else{event.target.classList.add('wrong');
+    const msgs={f1:'convenuto',f2:'autogoverno',f3:'Art. 27',f4:'ricorrente'};
+    fb.textContent='❌ Non esatto. La risposta corretta è: '+msgs[id];fb.className='fb show ko';}
+}
+
+// ── SCENARIO ─────────────────────────────────────────────
+function checkScen(btn,ok,fbId){
+  btn.closest('.scen-box').querySelectorAll('.scen-opt').forEach(b=>b.disabled=true);
+  btn.classList.add(ok?'ok':'ko');
+  document.getElementById(fbId).classList.add('show');
+}
+
+// ── SIMULAZIONE PROCESSO ──────────────────────────────────
+let faseCorrente=1;
+function goFase(n){
+  document.querySelectorAll('.fase-content').forEach(f=>f.classList.remove('show'));
+  document.querySelectorAll('.fase-btn').forEach((b,i)=>{
+    b.classList.remove('active-fase');
+    if(i+1<n)b.classList.add('done');
+  });
+  document.getElementById('fase-'+n).classList.add('show');
+  document.querySelectorAll('.fase-btn')[n-1].classList.add('active-fase');
+  faseCorrente=n;
+}
+
+function checkFase1(btn,ok){
+  btn.closest('.scen-box')||btn.closest('.fase-content');
+  btn.closest('.fase-content').querySelectorAll('.scen-opt').forEach(b=>b.disabled=true);
+  btn.classList.add(ok?'ok':'ko');
+  const fb=document.getElementById('fase1-fb');
+  if(ok){fb.textContent='✅ Esatto! Il GIP (Giudice per le Indagini Preliminari) vigila sulla correttezza delle indagini e autorizza le misure più invasive (intercettazioni, arresti...).';fb.className='scen-fb show';}
+  else{fb.textContent='❌ Non esatto. È il GIP (Giudice per le Indagini Preliminari) a controllare la correttezza delle indagini.';fb.className='scen-fb show';}
+  document.getElementById('btn-fase1-avanti').style.display='inline-block';
+}
+
+function checkFase2(btn,ok){
+  btn.closest('.fase-content').querySelectorAll('.scen-opt').forEach(b=>b.disabled=true);
+  btn.classList.add(ok?'ok':'ko');
+  const fb=document.getElementById('fase2-fb');
+  if(ok){fb.textContent='✅ Esatto! Formulare l\'imputazione significa specificare di quale reato è accusato l\'imputato: il nome del reato, l\'articolo del codice penale violato e le circostanze.';fb.className='scen-fb show';}
+  else{fb.textContent='❌ Non esatto. L\'imputazione non è una condanna né la pena: è solo la specificazione del reato di cui l\'imputato è accusato.';fb.className='scen-fb show';}
+  document.getElementById('btn-fase2-avanti').style.display='inline-block';
+}
+
+function checkFase3(btn,scelta){
+  btn.closest('.fase-content').querySelectorAll('.scen-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('fase3-fb');
+  if(scelta==='condanna'){
+    btn.classList.add('ok');
+    fb.textContent='✅ Hai scelto la condanna. In effetti le prove video sembrano solide. Ricorda però che anche chi sbaglia può avere attenuanti (incensurato, giovane età). Nella realtà il giudice dovrà valutare con molta attenzione il dolo (l\'intenzione).';
+    fb.className='scen-fb show';
+  } else if(scelta==='assoluzione'){
+    btn.classList.add('ok');
+    fb.textContent='✅ Hai scelto l\'assoluzione per dubbio. Ricorda: in dubio pro reo (nel dubbio, a favore dell\'accusato). Se l\'intenzione non è provata al di là di ogni ragionevole dubbio, l\'assoluzione è una scelta legittima.';
+    fb.className='scen-fb show';
+  } else {
+    btn.classList.add('ko');
+    fb.textContent='❌ Il patteggiamento non viene proposto dal giudice durante il dibattimento: è un accordo che imputato e PM raggiungono PRIMA del dibattimento. Una volta in aula, il giudice può solo assolvere o condannare.';
+    fb.className='scen-fb show';
+  }
+  document.getElementById('btn-fase3-avanti').style.display='inline-block';
+}
+
+function resetProcesso(){
+  goFase(1);
+  document.querySelectorAll('.fase-btn').forEach(b=>b.classList.remove('done','active-fase'));
+  document.querySelectorAll('.fase-btn')[0].classList.add('active-fase');
+  ['.scen-opt','.fase-content .scen-opt'].forEach(sel=>{
+    document.querySelectorAll(sel).forEach(b=>{b.disabled=false;b.classList.remove('ok','ko');});
+  });
+  ['fase1-fb','fase2-fb','fase3-fb'].forEach(id=>{
+    const el=document.getElementById(id);if(el){el.className='scen-fb';el.textContent='';}
+  });
+  ['btn-fase1-avanti','btn-fase2-avanti','btn-fase3-avanti'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
+}
+
+// ── GLOSSARIO ─────────────────────────────────────────────
+function tgGlos(id){
+  const el=document.getElementById(id);
+  const ar=document.getElementById(id+'a');
+  el.classList.toggle('open');
+  ar.textContent=el.classList.contains('open')?'▲':'▼';
+}
+</script>
+</body>
+</html>
